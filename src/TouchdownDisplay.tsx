@@ -8,6 +8,7 @@ import { Translate } from './Translate';
 interface TouchdownProps extends ComponentProps {
     bus: EventBus;
     bounces: Subscribable<number>;
+    maxG: Subscribable<number>;
 }
 
 export class TouchdownDisplay extends DisplayComponent<TouchdownProps> {
@@ -63,6 +64,11 @@ export class TouchdownDisplay extends DisplayComponent<TouchdownProps> {
                         <td class="name">{Translate.text("VERTICAL_SPEED")}</td>
                         <td class="value">{this.verticalSpeed}</td>
                         <td class="units">&nbsp;{Translate.text("FPM")}</td>
+                    </tr>
+                    <tr>
+                        <td class="name">{Translate.text("G_FORCE")}</td>
+                        <td class="value">{this.props.maxG}</td>
+                        <td class="units">G</td>
                     </tr>
                     <tr>
                         <td class="name">{Translate.text("PITCH_ANGLE")}</td>
