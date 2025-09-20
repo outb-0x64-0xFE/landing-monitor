@@ -35,7 +35,7 @@ class LandingMonitor extends TemplateElement {
 
     constructor() {
         super();
-        this.bus = new EventBus();
+        this.bus = new EventBus(true);
         this.landingStatusPublisher = new LandingStatusPublisher(this.bus);
         this.approachPublisher = new ApproachPublisher(this.bus);
         this.touchdownPublisher = new TouchdownPublisher(this.bus);
@@ -73,8 +73,8 @@ class LandingMonitor extends TemplateElement {
         try {
             if (simvarIsReady()) {
                 if(this.isFirstUpdate) {
-	                FSComponent.render(<LandingStatus bus={this.bus} />, document.getElementById("LandingContent"));
-	                this.isFirstUpdate = false;
+                    FSComponent.render(<LandingStatus bus={this.bus} />, document.getElementById("LandingContent"));
+                    this.isFirstUpdate = false;
                 }
                 this.update();
             }
